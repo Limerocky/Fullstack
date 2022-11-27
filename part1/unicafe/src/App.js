@@ -33,6 +33,8 @@ const Button = ({ onClick, name }) => <button onClick={onClick}> {name} </button
 
 
 const Statistics = ({ good, neutral, bad }) => {
+  const all = good + neutral + bad
+
   return(
   <>
     <h1>statistics</h1>
@@ -40,6 +42,9 @@ const Statistics = ({ good, neutral, bad }) => {
       <li>good {good}</li>
       <li>neutral {neutral}</li>
       <li>bad {bad}</li>
+      <li>all {all}</li>
+      <li>average {(good - bad) / all}</li>
+      <li>positive {good / all * 100} %</li>
     </ul>
   </> 
   )
