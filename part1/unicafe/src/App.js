@@ -35,20 +35,33 @@ const Button = ({ onClick, name }) => <button onClick={onClick}> {name} </button
 const Statistics = ({ good, neutral, bad }) => {
   const all = good + neutral + bad
 
+  if (all === 0) {
+    return (
+      <div>
+        <h1>statistics</h1>
+        No feedback given
+      </div>
+    )
+  }
+
   return(
   <>
     <h1>statistics</h1>
-    <ul style={{ listStyleType: "none" }}>
-      <li>good {good}</li>
-      <li>neutral {neutral}</li>
-      <li>bad {bad}</li>
-      <li>all {all}</li>
-      <li>average {(good - bad) / all}</li>
-      <li>positive {good / all * 100} %</li>
-    </ul>
+    <table>
+      <tbody>
+          <StatisticLine text="good" value={good} />
+          <StatisticLine text="neutral" value={neutral} />
+          <StatisticLine text="bad" value={bad} />
+          <StatisticLine text="all" value={all} />
+          <StatisticLine text="average" value={(good - bad) / all} />
+          <StatisticLine text="positive" value={(good / all * 100)} sign="%" />
+      </tbody>  
+    </table>
   </> 
   )
 }
+
+const StatisticLine = ({ text, value, sign }) => <tr><td>{text}</td><td>{value} {sign}</td></tr>
 
 
 export default App
