@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
@@ -47,6 +48,21 @@ const App = () => {
   }
 
 
+  const Form = () => {
+    <form onSubmit={addNewPerson}>
+      <div>
+        name: <input value={newName} onChange={onNameChange}/>
+      </div>
+      <div>
+        number: <input value={newNumber} onChange={onNumberChange}/>
+      </div>
+      <div>
+        <button type="submit">add</button>
+      </div>
+    </form>
+  }
+
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -54,17 +70,7 @@ const App = () => {
         filter shown with <input value={filter} onChange={onFilterChange}/>
       </div>
       <h2>add a new</h2>
-      <form onSubmit={addNewPerson}>
-        <div>
-          name: <input value={newName} onChange={onNameChange}/>
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={onNumberChange}/>
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Form />
       <h2>Numbers</h2>
       <div>
         <ul>
