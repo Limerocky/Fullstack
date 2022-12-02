@@ -62,7 +62,7 @@ const List = ({ countries, filter, setFilter }) => {
       )
     }
 
-    else if (countries.length == 1) {
+    else if (countries.length === 1) {
       return (<Single country={countries[0]} />)
     }
 
